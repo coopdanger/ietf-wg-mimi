@@ -12,7 +12,7 @@ Messaging applications commonly also support voice and video calling and confere
 
 E2EE messaging services rely on metadata processing to manage spam and abuse. The working group will specify general-purpose means for the exchange of such metadata, which may include the signaling of feedback about users/accounts, outputs derived from reputation services, or other information interoperating providers use for filtering purposes. 
 
-The working group will consider one-to-one messaging as its first priority use case, but will aim for designs that can be reused or extended to support group messaging (and audio/video).
+For all of its core deliverables, the working group will consider one-to-one messaging as its first priority use case, but will aim for designs that can be reused or extended to support group messaging (and audio/video).
 
 [TODO: What is out of scope]
 
