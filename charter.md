@@ -14,14 +14,14 @@ E2EE messaging services rely on metadata processing to manage spam and abuse. Th
 
 For all of its core deliverables, the working group will aim for general-purpose designs, but will prioritize solutions for messaging before audio and video, and will prioritize solutions for one-to-one communications before multiparty communications.
 
-## What is out of scope
+The following are out of scope for the working group:
 
-* Extension to the MLS protocol. If needed, requirements will be referred to the MLS Working Group or another relevant Working Group, likely in the security area. 
+* Extensions to the MLS protocol. If needed, requirements will be referred to the MLS working group or other relevant working groups in the security area.
 * Definition of completely new identity formats or protocols.
-* Discovery of which service or services are associated with a specific phone number or email address.
+* Discovery of which service or services are associated with a recipient's specific phone number or email address without the consent of the recipient.
 * Extensions to SIP, SDP, MSRP, or WebRTC.
 * Development of anti-spam or anti-abuse algorithms.
-* Interoperable mechanisms for group administration or moderation across systems. Adoption of these items would require rechartering after the group substantially completed its existing milestones.
+* Interoperable mechanisms for group administration or moderation across systems. Adoption of these items would require rechartering after the group substantially progresses against its existing milestones.
 
 ## Prior art
 
