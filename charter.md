@@ -23,20 +23,9 @@ The following are out of scope for the working group:
 * Development of anti-spam or anti-abuse algorithms.
 * Interoperable mechanisms for group administration or moderation across systems. Adoption of these items would require rechartering after the group substantially progresses against its existing milestones.
 
-## Prior art
+Numerous prior attempts have been made to address messaging interoperability, including the IETF's extensive prior work on XMPP, SIP/SIMPLE, and their related messaging formats. The MIMI working group will draw lessons from these prior attempts, seek to avoid re-hashing old debates, and will focus on the minimal standards suite necessary to facilitate interoperability given the feature set of modern messaging applications.
 
-TODO
-
-## Liaisons
-
-MIMI will maintain informal liaisons with the following Working Groups:
-
-* mls
-* rtcweb
-* stir
-* jose
-* oauth
-* W3C Verifiable Credentials WG
+MIMI will communicate with related working groups as needed, including MLS, STIR, OAUTH, JOSE, and the W3C Verifiable Credentials WG.
 
 ## Milestones
 
