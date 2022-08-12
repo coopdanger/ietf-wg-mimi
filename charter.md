@@ -33,17 +33,17 @@ MIMI will communicate with related working groups as needed, including MLS, STIR
 * WG adoption of requirements document for messaging interoperability
   (decision about whether to forward to IESG for publication to be made later,
   by WG consensus)
-* WG adoption of protocol specification for identifier naming conventions
-* WG adoption of protocol specification for identity profile(s)
-* WG adoption of protocol specification for messaging content format
-* WG adoption of protocol specification for user discovery mechanism
-* WG adoption of protocol specification for spam and abuse metadata exchange mechanism
+* WG adoption of specification for identifier naming conventions
+* WG adoption of specification for identity profile(s)
+* WG adoption of specification for messaging content format
+* WG adoption of specification for user discovery mechanism
+* WG adoption of specification for spam and abuse metadata exchange mechanism
 * Forward framework document for messaging interoperability to IESG
-* Forward protocol specification for identifier naming conventions to IESG
-* Forward protocol specification for identity profile(s) to IESG
-* Forward protocol specification for messaging content format to IESG
-* Forward protocol specification for user discovery mechanism to IESG
-* Forward protocol specification for spam and abuse metadata exchange mechanism to IESG
+* Forward specification for identifier naming conventions to IESG
+* Forward specification for identity profile(s) to IESG
+* Forward specification for messaging content format to IESG
+* Forward specification for user discovery mechanism to IESG
+* Forward specification for spam and abuse metadata exchange mechanism to IESG
 
 
 
