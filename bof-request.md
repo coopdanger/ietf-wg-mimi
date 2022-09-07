@@ -7,13 +7,13 @@ The lack of interoperability between these services continues to create a subopt
 
 In theory, messaging application interoperability could be achieved entirely through the publication of vendor-specific APIs and without standardization. However, this would perpetuate suboptimal outcomes for both users and app developers, as supporting the matrix of pairwise communication flows between applications via vendor-specific APIs would create a patchwork of inconsistent user experiences and likely lead to buggy implementations. The theory behind MIMI is that using a minimal standardized framework to enable cross-app commmunications will provide more consistency while leaving app developers freedom to continue to make their own design choices. The proposed charter (linked below) focuses on this minimal set of mechanisms required to make modern Internet messaging applications interoperable. 
 
-At IETF 114 there was well-attended MIMI side meeting (see notes from the meeting linked below) where participants largely agreed on the existence of the problem and the desirability of finding standardized solutions to respond to increasing external pressures to interoperate. 
+At IETF 114 there was a well-attended MIMI side meeting (see notes from the meeting linked below) where participants largely agreed on the existence of the problem and the desirability of finding standardized solutions to respond to increasing external pressures to interoperate. 
 
 
 ## Required Details
 - Status: WG Forming
 - Responsible AD: Murray Kucherawy, Francesca Palombini
-- BOF proponents: Rohan Mahy <rohan.mahy@wire.com>, Jonathan Rosenberg <jdrosen@jdrosen.net>, Cullen Jennings <fluffy@>, Alissa Cooper <alissa@cooperw.in> 
+- BOF proponents: Rohan Mahy <rohan.mahy@wire.com>, Jonathan Rosenberg <jdrosen@jdrosen.net>, Cullen Jennings <fluffy@cisco.com>, Alissa Cooper <alissa@cooperw.in> 
 - BOF chairs: TBD
 - Number of people expected to attend: 100
 - Length of session (1 or 2 hours): 2 hours
@@ -32,11 +32,12 @@ Any protocols or practices that already exist in this space:
 * ACME [RFC8555]
 
 Which (if any) modifications to existing protocols or practices are required: 
-* None envisioned to be required, although that could change based on BOF/WG discussions
+* No modifications required, but the need for an MLS profile is envisioned.
 
 Which (if any) entirely new protocols or practices are required: 
-* Mechanism for user discovery
 * Content format
+* Specification for how to establish end-to-end cryptographic identity
+* Mechanism for user discovery may or may not be required (TBD)
 
 Implementations:
 * Dozens of messaging implementations exist, but do not interoperate.
