@@ -15,7 +15,7 @@ At IETF 114 there was a well-attended MIMI side meeting (see notes from the meet
 ## Required Details
 - Status: WG Forming
 - Responsible AD: Murray Kucherawy, Francesca Palombini
-- BOF proponents: Rohan Mahy <rohan.mahy@wire.com>, Jonathan Rosenberg <jdrosen@jdrosen.net>, Cullen Jennings <fluffy@cisco.com>, Alissa Cooper <alissa@cooperw.in> 
+- BOF proponents: Rohan Mahy <rohan.mahy@wire.com>, Jonathan Rosenberg <jdrosen@jdrosen.net>, Cullen Jennings <fluffy@iii.ca>, Alissa Cooper <alissa@cooperw.in> 
 - BOF chairs: TBD
 - Number of people expected to attend: 100
 - Length of session (1 or 2 hours): 2 hours
