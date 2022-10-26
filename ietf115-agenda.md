@@ -1,5 +1,4 @@
-# More Instant Messaging Interoperability (MIMI) BOF Agenda
-# IETF 115
+# More Instant Messaging Interoperability (MIMI) BOF Agenda - IETF 115
 
 - Agenda Bash / Administrativia (Chairs) 5 minutes
 - Problem statement (Rohan Mahy) 20 minutes
