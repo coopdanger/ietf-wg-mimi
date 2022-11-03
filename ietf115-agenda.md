@@ -1,4 +1,4 @@
-# More Instant Messaging Interoperability (MIMI) BOF Agenda - IETF 115
+## More Instant Messaging Interoperability (MIMI) BOF Agenda - IETF 115
 
 - Agenda Bash / Administrativia (Chairs) 5 minutes
 - Problem statement (Rohan Mahy) 20 minutes
@@ -6,8 +6,10 @@
 - Charter discussion (Chairs) 50 minutes
 - BOF questions (Chairs) 15 minutes
 - Solution space discussion (time permitting)
+
 ---
-## Related Internet-drafts
+
+**Related Internet-drafts**
 Overview documents:
 - [More Instant Messaging Interoperability (MIMI) problem outline](https://www.ietf.org/archive/id/draft-mahy-mimi-problem-outline-01.html)
 - [A Taxonomy for More Messaging Interop (MIMI)](https://www.ietf.org/archive/id/draft-rosenberg-mimi-taxonomy-00.html)
