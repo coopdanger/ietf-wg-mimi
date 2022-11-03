@@ -25,7 +25,7 @@ Message Format:
 - [Matrix Message Format](https://turt2live.github.io/ietf-mimi-matrix-message-format/draft-ralston-mimi-matrix-message-format.html)
 
 Message Transport:
-- [Matrix Message Transport](Matrix Message Transport)
+- [Matrix Message Transport](https://turt2live.github.io/ietf-mimi-matrix-transport/draft-ralston-mimi-matrix-transport.html)
 - [Cached and Async meSsage Transport (CAST)](https://datatracker.ietf.org/doc/html/draft-nandakumar-mimi-transport-00)
 
 Message Content:
