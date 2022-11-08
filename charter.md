@@ -8,7 +8,7 @@ Achieving interoperability requires a solution for the introduction problem, i.e
 
 Modern messaging applications commonly support numerous features including plain and rich text, delivery notifications, read receipts, replies, reactions, and many more. The working group will identify a baseline set of messaging features and specify a content format to allow this feature set to be implemented interoperably. This format must be usable in the presence of E2EE. In defining the format, the working group will seek to reuse existing primitives (especially existing semantics) including previously defined message headers, MIME types, and URIs where practical.
 
-In its initial phase, the working group will focus on solutions for messaging. The working group will aim for general-purpose designs fit for both 1:1 and multiparty messaging. In a future phase, the working group may recharter to work on audio and video. The working group will not standardize new signaling or media protocols but may recommend the use of existing protocols and suites such as SIP and WebRTC. 
+In its initial phase, the working group will focus on solutions for messaging. The working group will aim for general-purpose designs fit for both 1:1 and multiparty messaging. In a future phase, the working group may recharter to work on audio and video. The working group will use existing signaling or media protocols where possible (e.g. SIP or WebRTC).
 
 A recharter would be required should the working group decide to work on:
 * Metadata processing to manage spam and abuse
