@@ -4,6 +4,8 @@ The More Instant Messaging Interoperability (MIMI) working group will specify th
 
 Recognizing the need for a standardized security protocol to support group key establishment, authentication, and confidentiality services for messaging, the IETF has specified the Messaging Layer Security (MLS) protocol [I-D.ietf-mls-protocol] and architecture [I-D.ietf-mls-architecture]. MLS is agnostic to the identity system used within any given messaging service; it provides confidentiality of sessions once the participants in a conversation have been identified. To achieve interoperable messaging, the MIMI working group will specify how one or more identity building block technologies (for example, X.509 certificates or Verifiable Credentials) can be used to establish end-to-end cryptographic identity across messaging services, assuming the use of MLS for key establishment. 
 
+Interoperable messaging in federated environments requires consensus on a common delivery service and a transport protocol between federated domains. Specifically, the MLS protocol requires ordering of handshake messages within groups to ensure clients can synchronize despite asynchronous message delivery. This working group will specify a flexible solution for transport and delivery that takes into account typical requirements and best practices from the industry. 
+
 Achieving interoperable messaging among MIMI compliant services requires a solution for the introduction problem, i.e., the ability for a user in one application to take an identifier for a target user along with the associated application, be granted permission to initiate communications, and be able to establish communications with the target. The working group will specify a solution to the introduction problem, together with best practice recommendations for functionality, configuration options, and other aspects. The working group may also choose to specify a solution to discover the set of preferred applications associated with a given identifier. Express and implied user preferences about discoverability and reachability must be respected. 
 
 Modern messaging applications commonly support numerous features including plain and rich text, delivery notifications, read receipts, replies, reactions, and many more. The working group will identify a baseline set of messaging features and specify a content format to allow this feature set to be implemented interoperably. This format must be usable in the presence of E2EE. In defining the format, the working group will seek to reuse existing primitives (especially existing semantics) including previously defined message headers, MIME types, and URIs where practical.
@@ -34,12 +36,14 @@ MIMI will communicate with related working groups as needed, including MLS, STIR
   by WG consensus)
 * WG adoption of specification for identifier naming conventions
 * WG adoption of specification for establishment of end-to-end cryptographic identity
+* WG adoption of specification for delivery service and transport mechanisms
 * WG adoption of specification of MLS profile
 * WG adoption of specification for messaging content format
 * WG adoption of specification for user discovery mechanism
 * Forward framework document for messaging interoperability to IESG
 * Forward specification for identifier naming conventions to IESG
 * Forward specification for establishment of end-to-end cryptographic identity to IESG
+* Forward specification for delivery service and transport mechanisms to IESG
 * Forward specification of MLS profile to IESG
 * Forward specification for messaging content format to IESG
 * Forward specification for user discovery mechanism to IESG
