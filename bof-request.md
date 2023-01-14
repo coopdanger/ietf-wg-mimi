@@ -70,6 +70,8 @@ Possible relationships with related ongoing standards work:
 	  	- https://www.ietf.org/archive/id/draft-mahy-mimi-identity-00.html
 	  - Content profile:
 	  	- https://www.ietf.org/archive/id/draft-mahy-mimi-content-00.html
+	  	- https://www.ietf.org/archive/id/draft-ralston-mimi-matrix-transport-00.html
+	  	- https://www.ietf.org/archive/id/draft-ralston-mimi-matrix-message-format-00.html
 	  - Framework for identity mapping:
 	  	- https://www.ietf.org/archive/id/draft-rosenberg-dispatch-spin-00.html
 	  - Content negotiation for MLS:
