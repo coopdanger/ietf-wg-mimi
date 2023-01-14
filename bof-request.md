@@ -64,7 +64,7 @@ Possible relationships with related ongoing standards work:
    - Mailing List: https://www.ietf.org/mailman/listinfo/mimi
    - Draft charter: https://github.com/coopdanger/ietf-wg-mimi/blob/main/charter.md
    - Relevant drafts:
-      - Problem outline:
+   	  - Problem outline:
 		- https://www.ietf.org/archive/id/draft-mahy-mimi-problem-outline-00.html
 	  - Identity concepts:
 	  	- https://www.ietf.org/archive/id/draft-mahy-mimi-identity-00.html
@@ -76,4 +76,6 @@ Possible relationships with related ongoing standards work:
 	  	- https://www.ietf.org/archive/id/draft-rosenberg-dispatch-spin-00.html
 	  - Content negotiation for MLS:
 	  	- https://www.ietf.org/archive/id/draft-mahy-mls-content-neg-00.html
+	  - Delivery service:
+	  	- https://www.ietf.org/archive/id/draft-robert-mimi-delivery-service-00.html
    - Notes from IETF 114 side meeting: https://mailarchive.ietf.org/arch/msg/mimi/OVHWG44YVgn5cYMeWOWKe-T0HEs/
