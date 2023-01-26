@@ -1,4 +1,4 @@
-# ietf-wg-mimi (IETF Working Group of More Instant Messaging Interoperability)
+# [ietf-wg-mimi](https://datatracker.ietf.org/group/mimi/documents/) (IETF Working Group of More Instant Messaging Interoperability)
 
 ## Description 
 
