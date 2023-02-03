@@ -8,18 +8,17 @@ Interoperable messaging in federated environments requires consensus on a common
 
 Achieving interoperable messaging among MIMI-compliant services requires a solution for the introduction problem, i.e., the ability for a user in one application to take an identity of a target user along with the associated application, be granted permission to initiate communications, and be able to establish communications with the target. The working group will specify a solution to the introduction problem, together with best practice recommendations for functionality, configuration options, and other aspects. The working group may also choose to specify a solution to discover the set of preferred messaging services associated with a given identity. Express and implied user preferences about discoverability and reachability must be respected. 
 
-Modern messaging services commonly support numerous features including plain and rich text, delivery notifications, read receipts, replies, reactions, and many more. The working group will identify an extensible baseline set of messaging features and specify a content format to allow this feature set to be implemented interoperably. This format must be usable in the presence of E2EE. In defining the format, the working group will seek to reuse existing primitives (especially existing semantics) including previously defined message headers, MIME types, and URIs where practical.
+Modern messaging services commonly support numerous features including plain and rich text, delivery notifications, read receipts, replies, reactions, spam filtering, abuse reporting and many more. The working group will identify an extensible baseline set of messaging features and specify a content format to allow this feature set to be implemented interoperably. This format must be usable in the presence of E2EE. In defining the format, the working group will seek to reuse existing primitives (especially existing semantics) including previously defined message headers, MIME types, and URIs where practical.
 
 In its initial phase, the working group will focus on solutions for messaging. The working group will aim for general-purpose designs fit for both 1:1 and multiparty messaging. The working group will not standardize new audio/video signaling or media protocols but may recommend the use of existing protocols and suites such as SIP and WebRTC. 
 
 The following are out of scope for the working group:
-* Metadata processing to manage spam and abuse
 * Interoperable mechanisms for group administration or moderation across systems
 * Extensions to the MLS protocol. If needed, requirements will be referred to the MLS working group or other relevant working groups in the security area.
 * Definition of completely new identity formats or protocols.
 * Extensions to SIP, SDP, MSRP, or WebRTC.
 * Support for presence.
-* Development of anti-spam or anti-abuse algorithms.
+* Development of anti-spam or anti-abuse algorithms, including how to process metadata for anti-spam or anti-abuse
 * Oracle or look-up services that reveal the list of messaging services associated with a given user identity without the user's permission.
 
 Numerous prior attempts have been made to address messaging interoperability, including the IETF's extensive prior work on XMPP, SIP/SIMPLE, and their related messaging formats. The MIMI working group will draw lessons from these prior attempts, seek to avoid re-hashing old debates, and will focus on the minimal standards suite necessary to facilitate interoperability given the feature set of modern messaging applications.
