@@ -8,11 +8,13 @@ Author: Alissa Cooper
 
 This document is attempting to capture requirements under discussion in the MIMI working group related to the MIMI transport service. It makes use of the terminology found in [draft-ralston-mimi-terminology](https://turt2live.github.io/ietf-mimi-terminology/draft-ralston-mimi-terminology.html). It also uses concepts from the [DMA gatekeeper comparison](https://docs.google.com/spreadsheets/d/1FiR4yhU5BpLtoeFFda5ORr86qwT33fYZowY_bWDlPas/edit#gid=1412633047).
 
+As an initial step, this document describes what functionality should exist without expressing normative requirements on specific protocol entities. Once we get agreement on the functionality to be supported, we could convert to normative requirements on specific entities if the WG would find that helpful.
+
 ## 2.  Scope
 
-The transport service is assumed to operate between servers operated by different messaging providers.
+The transport service is assumed to operate between servers operated by different messaging providers. [Note: IIRC, at the June 7 interim there seemed to be some interest in generalizing this to say that the transport service is effectuated via an API offered by owners, which may be consumed either by clients or guest providers. Should we adopt that scoping?]
 
-[TODO: Client implications of MLS delivery service.]
+[Details to be worked out about interaction between transport service and MLS delivery service.]
 
 ## 3.  Requirements
 
@@ -22,7 +24,9 @@ The transport service is assumed to operate between servers operated by differen
 
 - ID-2.  User IDs are _provider-specific_: the user ID syntax includes a provider identifier part and a user identifier part.
 
-- ID-3.  User IDs are unique within a single provider and globally unique. However, an individual user Alice may have multiple user IDs within a single provider, globally, or both that are associated with Alice's identity.
+- ID-3.  User IDs are unique within a single provider and globally unique.
+
+- ID-4. An individual user Alice can have multiple user IDs within a single provider, globally, or both that are associated with Alice's identity.
 
 _Discovery_, which is the process of determining on which provider(s) a user with a specific user identifier can be contacted, is an important problem whose solution would benefit from protocol support. The WG intends to return to this topic in the future.
 
@@ -30,11 +34,11 @@ _Discovery_, which is the process of determining on which provider(s) a user wit
 
 - CHAT-1.  Direct messages (DMs) are supported.
 
-- CHAT-2.  Only one DM between any two users may exist at any time.
+- CHAT-2.  Only one DM between any two users can exist at any time.
 
 - CHAT-3.  Group DMs are supported. [WG discussion about this did not have a strong conclusion. Many existing services support group DMs, but they are more complicated in the interop case.]
 
-- CHAT-4.  Only one group DM between any unique set of users may exist at any time, except in the case of CHAT-9 below. [Enforcing uniqueness across multiple providers will be tricky.]
+- CHAT-4.  Only one group DM between any unique set of users can exist at any time, except in the case of CHAT-9 below. [Enforcing uniqueness across multiple providers will be tricky.]
 
 - CHAT-5.  Group chats are supported.
 
@@ -46,6 +50,8 @@ _Discovery_, which is the process of determining on which provider(s) a user wit
 
 - CHAT-9. When a user leaves a group DM, it remains a group DM with the remaining participants, even if it has exactly the same membership as an existing group DM. The leaver can continue to see past message history. [This behavior is common to many existing messaging services.]
 
+- CHAT-10.  When a user leaves a group DM and the resulting chat contains only two users, it does not convert to a DM. It exists separately from any existing or future DM between those two users. [Behavior of existing services varies widely on this.]
+
 ### 3.3 Information Sharing Upon First Contact
 
 When two users communicate for the first time using existing messaging services in the market today, the information shared with the recipient about the sender and the sender's message is determined by the consent model that the messaging provider uses, and potentially by settings configured by the sender or the recipient or both. The requirements below describe information sharing upon first contact between a sender, Alice, and a recipient, Bob.
@@ -54,7 +60,7 @@ When Alice sends Bob a message:
 
 - SHARING-1.  Bob can see Alice's name. [NB: [DMA gatekeeper comparison](https://docs.google.com/spreadsheets/d/1FiR4yhU5BpLtoeFFda5ORr86qwT33fYZowY_bWDlPas/edit#gid=1412633047) says that this is not the behavior for iMessage, but is this because Alice's name is not necessarily available to iMessage? Query whether there is a different version of this requirement that requires that Bob be able to see a user identifier of Alice's choosing?]
 
-- SHARING-2.  Bob can see Alice's user identifier.
+- SHARING-2.  Bob can see Alice's user identifier (e.g., phone number of handle).
 
 - SHARING-3.  Whether Bob can see Alice's avatar prior to consenting is a setting configurable by Alice.
 
@@ -73,4 +79,53 @@ Similarly, the requirements below describe the expected information sharing when
 - SHARING-9.  When Alice invites Bob to a group chat or a group DM, Bob can see the user identifiers of the other users who are in or invited to the group chat or group DM. (?)
 
 - SHARING-10.  When Alice invites Bob to a group chat or a group DM, whether Bob can see the avatars of any of the users who are in or invited to the group chat or group DM prior to consenting is a setting configurable by each of those users.
+
+### 3.4 Chat Management
+
+[This needs further discussion before suggesting some initial requirements. Based on the feature support documented in [DMA gatekeeper comparison](https://docs.google.com/spreadsheets/d/1FiR4yhU5BpLtoeFFda5ORr86qwT33fYZowY_bWDlPas/edit#gid=1412633047), it seems like the minimal set for which we need some approach to authorization is:
+
+- Who is allowed to send invites and which types of invites
+- Who can kick
+- Who can ban (if anyone can ban)
+- Whether deleting others' posts for the entire group is possible
+- Whether we need the role of admin, whether the chat creator is always the admin, and whether other users can be designated as admins
+- Whether we need the role of moderator, and how it relates to the role of admin
+- How all of the above works for DMs
+
+Based on lack of feature support in existing systems, I think we can leave the rest of the admin features out of scope for now.]
+
+### 3.5 MLS-Level Access Control
+
+- MLSACP-1. Each chat has an MLS-level access control policy (ACP) associated with it that describes which MLS member roles are allowed to make MLS proposals of different kinds and which MLS member roles are required to accept proposed MLS commits. 
+
+- MLSACP-2.  Servers can propose MLS-level ACPs that clients can check for conformity with pre-defined MLS-level ACP templates.
+
+- MLSACP-3. Clients can propose MLS-level ACPs.
+
+[The above tries to capture where the discussion of this seemed to land at the interim. WG is awaiting someone to write down a concrete proposal of what ACL template(s) should be supported.]
+
+### 3.6 Chat Ownership and Portability
+
+- OWN-1. Each chat is owned by one provider. The owner is the source of truth for the chat's membership and events. 
+
+- OWN-2. All chat events initiated by chat members are processed by the owner and fanned out to guest providers.
+
+- OWN-3.  The owner enforces the chat's authorization policy. (?)
+
+- OWN-4. Moving a chat from one owner to another is not supported.
+
+### 3.7 Privacy for metadata
+
+- PRIV-1. Public MLS commits can be used.
+
+[Above seems to be the only real point of agreement thus far. The rest needs more discussion, including:
+
+- Which threat model(s) we are seeking to address or not
+- Protections for user identifiers, if any
+- Protections for event-related metadata, if any
+- Protections for group structure or communications patterns, if any
+- Protections for config information containing any of the above
+- Any MLS, feature, or abuse mitigation limitations associated with making use of specific protections]
+
+
 
