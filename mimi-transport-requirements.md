@@ -12,7 +12,7 @@ As an initial step, this document describes what functionality should exist with
 
 ## 2.  Scope
 
-The transport service is assumed to operate between servers operated by different messaging providers. [Note: IIRC, at the June 7 interim there seemed to be some interest in generalizing this to say that the transport service is effectuated via an API offered by owners, which may be consumed either by clients or guest providers. Should we adopt that scoping?]
+The transport service is assumed to operate between servers operated by different messaging providers. [Note: IIRC, at the June 7 interim there seemed to be some interest in generalizing this to say that the transport service is effectuated via an API offered by hub servers, which may be consumed either by clients or guest servers. Should we adopt that scoping?]
 
 [Details to be worked out about interaction between transport service and MLS delivery service.]
 
@@ -24,11 +24,11 @@ The transport service is assumed to operate between servers operated by differen
 
 - ID-2.  User IDs are _provider-specific_: the user ID syntax includes a provider identifier part and a user identifier part.
 
-- ID-3.  User IDs are unique within a single provider and globally unique.
+- ID-3.  User IDs are globally unique.
 
-- ID-4. An individual user Alice can have multiple user IDs within a single provider, globally, or both that are associated with Alice's identity.
+- ID-4. An individual user Alice can have multiple user IDs within a single provider, globally, or both.
 
-_Discovery_, which is the process of determining on which provider(s) a user with a specific user identifier can be contacted, is an important problem whose solution would benefit from protocol support. The WG intends to return to this topic in the future.
+_Provider discovery_, which is the process of determining on which provider(s) a user with a specific user identifier can be contacted, is an important problem whose solution would benefit from protocol support. The WG intends to return to this topic in the future.
 
 ### 3.2 Chat Types
 
@@ -46,21 +46,25 @@ _Discovery_, which is the process of determining on which provider(s) a user wit
 
 - CHAT-7.  A new user cannot be added to a group DM.
 
-- CHAT-8.  Public chats are not supported.
+- CHAT-8.  Public chats are supported.
 
-- CHAT-9. When a user leaves a group DM, it remains a group DM with the remaining participants, even if it has exactly the same membership as an existing group DM. The leaver can continue to see past message history. [This behavior is common to many existing messaging services.]
+- CHAT-9. When a user leaves a group DM, it remains a group DM with the remaining participants, even if it has exactly the same membership as an existing group DM. The leaver's client stores the past message history. [The leaver being able to see past message history is behavior common to many existing messaging services. But in the interop case this entails additionally complexity that may not be worth supporting.]
 
 - CHAT-10.  When a user leaves a group DM and the resulting chat contains only two users, it does not convert to a DM. It exists separately from any existing or future DM between those two users. [Behavior of existing services varies widely on this.]
+
+- CHAT-11. When a user leaves a group DM, the leaver cannot re-join the group DM.
+
+[Do we want to support the promotion of group DMs to group chats?]
 
 ### 3.3 Information Sharing Upon First Contact
 
 When two users communicate for the first time using existing messaging services in the market today, the information shared with the recipient about the sender and the sender's message is determined by the consent model that the messaging provider uses, and potentially by settings configured by the sender or the recipient or both. The requirements below describe information sharing upon first contact between a sender, Alice, and a recipient, Bob.
 
-When Alice sends Bob a message:
+When Alice sends Bob a DM for the first time:
 
 - SHARING-1.  Bob can see Alice's name. [NB: [DMA gatekeeper comparison](https://docs.google.com/spreadsheets/d/1FiR4yhU5BpLtoeFFda5ORr86qwT33fYZowY_bWDlPas/edit#gid=1412633047) says that this is not the behavior for iMessage, but is this because Alice's name is not necessarily available to iMessage? Query whether there is a different version of this requirement that requires that Bob be able to see a user identifier of Alice's choosing?]
 
-- SHARING-2.  Bob can see Alice's user identifier (e.g., phone number of handle).
+- SHARING-2.  Bob can see Alice's user identifier (e.g., phone number or handle).
 
 - SHARING-3.  Whether Bob can see Alice's avatar prior to consenting is a setting configurable by Alice.
 
@@ -68,17 +72,15 @@ When Alice sends Bob a message:
 
 - SHARING-5.  Whether Bob can see Alice's status message is configurable by both Alice and Bob. If both Alice and Bob allow it, Alice's status message is displayed to Bob.
 
-- SHARING-6.  Whether Bob can see Alice's presence is configurable by Alice.
-
 Similarly, the requirements below describe the expected information sharing when a user Alice invites a user Bob to a group chat or a group DM.
 
-- SHARING-7.  When Alice invites Bob to a group chat, Bob can see the name of the group chat.
+- SHARING-6.  When Alice invites Bob to a group chat, Bob can see the name of the group chat.
 
-- SHARING-8.  When Alice invites Bob to a group chat or a group DM, Bob can see the names of the other users who are in or invited to the group chat or group DM.
+- SHARING-7.  When Alice invites Bob to a group chat or a group DM, Bob can see the names of the other users who are in the group chat or group DM. [What about the users who are invited to the group chat or group DM? And does the concept of invite even make sense for a group DM?]
 
-- SHARING-9.  When Alice invites Bob to a group chat or a group DM, Bob can see the user identifiers of the other users who are in or invited to the group chat or group DM. (?)
+- SHARING-8.  When Alice invites Bob to a group chat or a group DM, Bob can see the user identifiers of the other users who are in or invited to the group chat or group DM. (?)
 
-- SHARING-10.  When Alice invites Bob to a group chat or a group DM, whether Bob can see the avatars of any of the users who are in or invited to the group chat or group DM prior to consenting is a setting configurable by each of those users.
+- SHARING-9.  When Alice invites Bob to a group chat or a group DM, whether Bob can see the avatars of any of the users who are in or invited to the group chat or group DM prior to consenting is a setting configurable by each of those users.
 
 ### 3.4 Chat Management
 
@@ -104,15 +106,13 @@ Based on lack of feature support in existing systems, I think we can leave the r
 
 [The above tries to capture where the discussion of this seemed to land at the interim. WG is awaiting someone to write down a concrete proposal of what ACL template(s) should be supported.]
 
-### 3.6 Chat Ownership and Portability
+### 3.6 Hubs and Portability
 
-- OWN-1. Each chat is owned by one provider. The owner is the source of truth for the chat's membership and events. 
+- OWN-1. Each chat has one provider providing the hub server for the chat.
 
-- OWN-2. All chat events initiated by chat members are processed by the owner and fanned out to guest providers.
+- OWN-2. All chat events initiated by chat members are processed by the hub server and fanned out to guest servers [or clients?].
 
-- OWN-3.  The owner enforces the chat's authorization policy. (?)
-
-- OWN-4. Moving a chat from one owner to another is not supported.
+- OWN-3. Moving the role of hub server for a given chat from one provider to another is not supported.
 
 ### 3.7 Privacy for metadata
 
@@ -126,6 +126,15 @@ Based on lack of feature support in existing systems, I think we can leave the r
 - Protections for group structure or communications patterns, if any
 - Protections for config information containing any of the above
 - Any MLS, feature, or abuse mitigation limitations associated with making use of specific protections]
+
+### 3.8 Multi-device support
+
+[TODO: Add requirements.]
+
+### 3.9 Offline support
+
+[TODO: Add requirements.]
+
 
 
 
