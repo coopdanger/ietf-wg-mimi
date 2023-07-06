@@ -57,6 +57,7 @@ _Provider discovery_, which is the process of determining on which provider(s) a
 The following table summarizes requirements CHAT-6 to CHAT-11:
 
 |  | New user can be added | User can leave|
+|---|---|---|
 | DM | N | N |
 | Group DM | N | Y |
 | Group chat | Y | Y |
