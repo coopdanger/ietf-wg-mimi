@@ -1,6 +1,6 @@
 # MIMI Transport Service Requirements
 
-Date: June 29, 2023
+Date: June 27, 2023
 
 Author: Alissa Cooper
 
@@ -46,15 +46,30 @@ _Provider discovery_, which is the process of determining on which provider(s) a
 
 - CHAT-7.  A new user cannot be added to a group DM.
 
-- CHAT-8.  Public chats are supported.
+- CHAT-8.  A new user can be added to a group chat.
 
-- CHAT-9. When a user leaves a group DM, it remains a group DM with the remaining participants, even if it has exactly the same membership as an existing group DM. The leaver's client stores the past message history. [The leaver being able to see past message history is behavior common to many existing messaging services. But in the interop case this entails additionally complexity that may not be worth supporting.]
+- CHAT-9.  A user cannot leave a DM.
 
-- CHAT-10.  When a user leaves a group DM and the resulting chat contains only two users, it does not convert to a DM. It exists separately from any existing or future DM between those two users. [Behavior of existing services varies widely on this.]
+- CHAT-10.  A user can leave a group DM.
 
-- CHAT-11. When a user leaves a group DM, the leaver cannot re-join the group DM.
+- CHAT-11.  A user can leave a group chat.
 
-[Do we want to support the promotion of group DMs to group chats?]
+The following table summarizes requirements CHAT-6 to CHAT-11:
+
+|  | New user can be added | User can leave|
+| DM | N | N |
+| Group DM | N | Y |
+| Group chat | Y | Y |
+
+- CHAT-12.  Public chats are supported.
+
+- CHAT-13. When a user leaves a group DM, it remains a group DM with the remaining participants, even if it has exactly the same membership as an existing group DM. The leaver's client stores the past message history. [The leaver being able to see past message history is behavior common to many existing messaging services. But in the interop case, supporting the ability to leave a group DM entails additionally complexity that may not be worth supporting, e.g., when one of the remaining users attempts to create a new group DM on a different hub server with the same participants.]
+
+- CHAT-14.  When a user leaves a group DM and the resulting chat contains only two users, it does not convert to a DM. It exists separately from any existing or future DM between those two users. [Behavior of existing services varies widely on this.]
+
+- CHAT-15. When a user leaves a group DM, the leaver cannot re-join the group DM.
+
+[Do we want to support the promotion of group DMs to group chats, or the promotion of DMs to group chats (which sort of undercuts CHAT-6 and CHAT-7)? What does this entail beyond naming the chat and allowing additional users to join it? Which users have to agree for this to happen and what happens to the message history?]
 
 ### 3.3 Information Sharing Upon First Contact
 
@@ -76,9 +91,9 @@ Similarly, the requirements below describe the expected information sharing when
 
 - SHARING-6.  When Alice invites Bob to a group chat, Bob can see the name of the group chat.
 
-- SHARING-7.  When Alice invites Bob to a group chat or a group DM, Bob can see the names of the other users who are in the group chat or group DM. [What about the users who are invited to the group chat or group DM? And does the concept of invite even make sense for a group DM?]
+- SHARING-7.  When Alice invites Bob to a group DM, Bob can see the names and user identifiers of the other users who were invited to the group DM. 
 
-- SHARING-8.  When Alice invites Bob to a group chat or a group DM, Bob can see the user identifiers of the other users who are in or invited to the group chat or group DM. (?)
+- SHARING-8.  When Alice invites Bob to a group chat, whether Bob can see names and user identifiers of the users who are in the group chat prior to consenting is configurable by the hub provider.
 
 - SHARING-9.  When Alice invites Bob to a group chat or a group DM, whether Bob can see the avatars of any of the users who are in or invited to the group chat or group DM prior to consenting is a setting configurable by each of those users.
 
@@ -90,9 +105,10 @@ Similarly, the requirements below describe the expected information sharing when
 - Who can kick
 - Who can ban (if anyone can ban)
 - Whether deleting others' posts for the entire group is possible
-- Whether we need the role of admin, whether the chat creator is always the admin, and whether other users can be designated as admins
-- Whether we need the role of moderator, and how it relates to the role of admin
+- Which user privilege levels need to be supported, e.g., admin or moderator, and what those privilege levels mean
+- Whether the chat creator is always the admin, and whether other users can be designated as admins
 - How all of the above works for DMs
+- Whether the authorization rules are enforced by the providers, the clients, or both
 
 Based on lack of feature support in existing systems, I think we can leave the rest of the admin features out of scope for now.]
 
@@ -108,11 +124,11 @@ Based on lack of feature support in existing systems, I think we can leave the r
 
 ### 3.6 Hubs and Portability
 
-- OWN-1. Each chat has one provider providing the hub server for the chat.
+- HUB-1. Each chat has one provider providing the hub server for the chat.
 
-- OWN-2. All chat events initiated by chat members are processed by the hub server and fanned out to guest servers [or clients?].
+- HUB-2. All chat events initiated by chat members are processed by the hub server and fanned out to guest servers [or clients?].
 
-- OWN-3. Moving the role of hub server for a given chat from one provider to another is not supported.
+- HUB-3. Moving the role of hub server for a given chat from one provider to another is not supported.
 
 ### 3.7 Privacy for metadata
 
