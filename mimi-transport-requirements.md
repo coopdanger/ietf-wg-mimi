@@ -111,7 +111,7 @@ Similarly, the requirements below describe the expected information sharing when
 - How all of the above works for DMs
 - Whether the authorization rules are enforced by the providers, the clients, or both
 
-Though not supported by DMA gatekeepers, being able to ban entire providers/servers from a chat may be needed.
+Being able to ban entire providers/servers from a chat may be needed.
 
 Based on lack of feature support in existing systems, I think we can leave the rest of the admin features out of scope for now.]
 
